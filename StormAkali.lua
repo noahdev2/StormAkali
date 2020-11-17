@@ -212,10 +212,13 @@ end
 ---@param source AIBaseClient
 ---@param dash DashInstance
 function Akali.OnGapclose(source, dash)
-    if not (source.IsEnemy and Menu.Get("Misc.GapE") and spells.E:IsReady()) and spells.E:GetName() == "AkaliE" then return end
+    if not (source.IsEnemy and Menu.Get("Misc.GapE") and spells.E:IsReady()) and spells.E:GetName() == "AkaliE"  then return end
     local paths = dash:GetPaths()
     local endPos = paths[#paths].EndPos
+    local pPos = Player.Position
+    if source:IsFacing(pPos) and spells.E:IsInRange(source) then
     spells.E:Cast(endPos)
+    end
 end
 
 ---@param _target AttackableUnit
