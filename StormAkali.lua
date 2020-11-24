@@ -216,7 +216,7 @@ function Akali.OnGapclose(source, dash)
     local paths = dash:GetPaths()
     local endPos = paths[#paths].EndPos
     local pPos = Player.Position
-    if source:IsFacing(pPos) and spells.E:IsInRange(source) then
+    if source:Distance(Player) < 400 and source:IsFacing(pPos) and spells.E:IsInRange(source) then
     spells.E:Cast(endPos)
     end
 end
